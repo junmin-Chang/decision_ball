@@ -12,7 +12,7 @@ class BallPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Ask Me Anything2'),
+          title: Text('Ask Me Anything'),
           backgroundColor: Colors.blue[900],
         ),
         body: Ball());
@@ -30,19 +30,46 @@ class _BallState extends State<Ball> {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.blue,
-      child: Center(
-        child: FlatButton(
+      child: Column(
+
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          FlatButton(
+              onPressed: () {
+                return null;
+              },
+              child: Image.asset('images/ball$ballNumber.png')),
+
+
+          SizedBox(height: 150.0,),
+
+          MaterialButton(
+
+            color: Colors.blue[900],
+            child: Text('Magic!',
+            style: TextStyle(
+              fontSize: 20.0,
+              fontFamily:'Pacifico'
+            ),),
+
             onPressed: () {
-              setState(() {
-                changeBall();
-              });
+              changeBall();
             },
-            child: Image.asset('images/ball$ballNumber.png')),
+
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
+            elevation: 15.0,
+
+          )
+        ],
       ),
     );
   }
 
   void changeBall() {
-    ballNumber = Random().nextInt(5) + 1;
+
+    setState(() {
+      ballNumber = Random().nextInt(5) + 1;
+    });
+
   }
 }
